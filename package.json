@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "crypto": "^1.0.1",
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "json-stringify-safe": "^5.0.1"
   }
 }
