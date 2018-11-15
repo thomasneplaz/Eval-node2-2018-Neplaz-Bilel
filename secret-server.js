@@ -8,28 +8,24 @@ const port = 4001
 
 const app = express()
 
-let mdp
+let mdp = 'secret'
 
 app.get('/', (req, res) => {
-  mdp = fs.readFileSync(__dirname + '/data/secret.txt','utf8')
   mdp = encrypt(mdp)
   fs.writeFileSync(__dirname + '/data/secret.txt',mdp)
   const decryptsecret = decrypt(fs.readFileSync(__dirname + '/data/secret.txt','utf8'))
   res.send(`<form action="/" method="GET">
               <input id="val" type="text" value="${decryptsecret}">
-              <input type="submit" value="Modifier" OnClick="fs.writeFileSync(__dirname + '/data/secret.txt',this)">
+              
             </form>
             <br/>
             <h3>${mdp}</h3>`)
 })
 
-
-
 app.listen(port, () => {
   console.log(`Listening on ${port}`)
 })
-
-
+  
 
 function encrypt(text){
   var cipher = crypto.createCipher(algorithm,password)
