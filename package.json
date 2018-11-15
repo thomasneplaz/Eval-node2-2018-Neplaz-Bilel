@@ -1,5 +1,5 @@
 {
-  "name": "eval-node2-2018",
+  "name": "time-server.js",
   "version": "1.0.0",
   "description": "eval node2 2018 student project",
   "main": "index.js",
@@ -20,5 +20,8 @@
     "fs-extra": "^7.0.1",
     "node-fetch": "^2.3.0",
     "nodemon": "^1.18.6"
+  },
+  "dependencies": {
+    "express": "^4.16.4"
   }
 }
