@@ -8,6 +8,8 @@ const port = 4001
 
 const app = express()
 
+let mdp
+
 app.get('/', (req, res) => {
   if(req.query.val) {
     let newPass = req.query.val
