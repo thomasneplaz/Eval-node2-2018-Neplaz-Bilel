@@ -8,15 +8,18 @@ const port = 4001
 
 const app = express()
 
-let mdp = 'secret'
-
 app.get('/', (req, res) => {
-  mdp = encrypt(mdp)
+  if(req.query.val) {
+    let newPass = req.query.val
+    mdp = encrypt(newPass)
+  } else {
+    mdp = encrypt(mdp)
+  }
   fs.writeFileSync(__dirname + '/data/secret.txt',mdp)
   const decryptsecret = decrypt(fs.readFileSync(__dirname + '/data/secret.txt','utf8'))
   res.send(`<form action="/" method="GET">
-              <input id="val" type="text" value="${decryptsecret}">
-              
+              <input name="val" type="text" value="${decryptsecret}">
+              <input type="submit" value="Modifier">
             </form>
             <br/>
             <h3>${mdp}</h3>`)
